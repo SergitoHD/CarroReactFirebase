@@ -41,7 +41,7 @@ const Edit = () => {
       <div>
         <div>
           <div>
-            <h1>Create Product</h1>
+            <h1>Edit product</h1>
             <form onSubmit={update}>
               <div className="mb-3">
                 <label className="form-label">Descripcion</label>
