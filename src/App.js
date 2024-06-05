@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Show from "./Components/Show";
 import Edit from "./Components/Edit";
 import Create from "./Components/Create";
+//clases
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
