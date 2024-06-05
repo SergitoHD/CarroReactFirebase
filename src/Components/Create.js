@@ -4,19 +4,19 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 
 const Create = () => {
-  const [Descripcion, setDescription] = useState("");
-  const [Precio, setPrecio] = useState(0);
-  const [Stock, setStock] = useState(0);
+  const [nombre, setNombre] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [talla, setTalla] = useState("");
   const navigate = useNavigate();
 
-  const carritoCollection = collection(db, "Carrito");
+  const productosCollection = collection(db, "productos");
 
   const store = async (e) => {
     e.preventDefault();
-    await addDoc(carritoCollection, {
-      Descripcion: Descripcion,
-      Precio: Precio,
-      Stock: Stock,
+    await addDoc(productosCollection, {
+      nombre: nombre,
+      sexo: sexo,
+      talla: talla,
     });
     navigate("/");
   };
@@ -26,34 +26,34 @@ const Create = () => {
       <div>
         <div>
           <div>
-            <h1>Create Product</h1>
+            <h1>Edit product</h1>
             <form onSubmit={store}>
               <div className="mb-3">
-                <label className="form-label">Descripcion</label>
+                <label className="form-label">Nombre</label>
                 <input
-                  value={Descripcion}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
                   type="text"
                   className="form-control"
                 />
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Precio</label>
+                <label className="form-label">Sexo</label>
                 <input
-                  value={Precio}
-                  onChange={(e) => setPrecio(e.target.value)}
-                  type="number"
+                  value={sexo}
+                  onChange={(e) => setSexo(e.target.value)}
+                  type="text"
                   className="form-control"
                 />
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Stock</label>
+                <label className="form-label">Talla</label>
                 <input
-                  value={Stock}
-                  onChange={(e) => setStock(e.target.value)}
-                  type="number"
+                  value={talla}
+                  onChange={(e) => setTalla(e.target.value)}
+                  type="text"
                   className="form-control"
                 />
               </div>

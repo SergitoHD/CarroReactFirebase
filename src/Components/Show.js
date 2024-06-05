@@ -12,11 +12,11 @@ const Show = () => {
   const [products, SetProducts] = useState([]);
 
   //Referencia a la BD de firebase
-  const carritoCollection = collection(db, "Carrito");
+  const productosCollection = collection(db, "productos");
 
   //Función para mostrar todos los docs
   const getProducts = async () => {
-    const data = await getDocs(carritoCollection);
+    const data = await getDocs(productosCollection);
     //console.log(data.docs);
     SetProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     //console.log(products);
@@ -24,7 +24,7 @@ const Show = () => {
 
   //Función para eliminar un doc
   const deleteProduct = async (id) => {
-    const productDoc = doc(db, "Carrito", id);
+    const productDoc = doc(db, "productos", id);
     await deleteDoc(productDoc);
     getProducts();
   };
@@ -68,9 +68,9 @@ const Show = () => {
             <table className="table table-dark table-hover">
               <thead>
                 <tr>
-                  <th>Descripcion</th>
-                  <th>Precio</th>
-                  <th>Stock</th>
+                  <th>Nombre</th>
+                  <th>Sexo</th>
+                  <th>Talla</th>
                   <th>Acciones</th>
                 </tr>
               </thead>
@@ -78,9 +78,9 @@ const Show = () => {
               <tbody>
                 {products.map((product) => (
                   <tr key={product.id}>
-                    <td>{product.Descripcion}</td>
-                    <td>{product.Precio}</td>
-                    <td>{product.Stock}</td>
+                    <td>{product.nombre}</td>
+                    <td>{product.sexo}</td>
+                    <td>{product.talla}</td>
                     <td>
                       <Link
                         to={`/edit/${product.id}`}
